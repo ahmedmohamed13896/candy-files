@@ -55,7 +55,7 @@
               </div>
               <div class="time-board board">
                 <img class="img-fluid " src="assets/media/images/time-img.png" alt="">
-                <div class="board-text"><span class="minuts">05</span>: <span class="seconds">00</span></div>
+                <div class="board-text"><span id="min" class="minuts">00</span>: <span id="sec" class="seconds">00</span></div>
               </div>
             </div>
           </div>
@@ -390,6 +390,33 @@
     $(document).on('click', '.question-popup .close',function () {
       $(this).closest('.question-popup').fadeOut();
     })
+
+
+    function incLevel(level ,qNumber,minNumbers){
+      var timer2 = "5:01";
+      var interval = setInterval(function () {
+
+
+        var timer = timer2.split(':');
+        //by parsing integer, I avoid all extra string processing
+        var minutes = parseInt(timer[0], 10);
+        var seconds = parseInt(timer[1], 10);
+        --seconds;
+        minutes = (seconds < 0) ? --minutes : minutes;
+        if (minutes < 0) clearInterval(interval);
+        seconds = (seconds < 0) ? 59 : seconds;
+        seconds = (seconds < 10) ? '0' + seconds : seconds;
+        //minutes = (minutes < 10) ?  minutes : minutes;
+        $('#min').text(minutes);
+        $('#sec').text(seconds);
+        timer2 = minutes + ':' + seconds;
+      }, 1000);
+        
+    }
+
+    
+    incLevel(1,1,4);
+
   </script>
 </body>
 

@@ -501,9 +501,7 @@ section .img-right{
   max-height: 95vh;
   margin: auto;
 }
-.question-popup .content .ques-container{
 
-}
 
 
 
@@ -586,6 +584,7 @@ section .img-right{
   background-repeat: no-repeat;
   background-size: cover;
   display: none;
+  z-index: 777;
 }
 .gameover-popup .content{
   position: relative;
@@ -626,6 +625,7 @@ section .img-right{
   background-repeat: no-repeat;
   background-size: cover;
   display: none;
+  z-index: 777;
 }
 .great-popup .content{
   position: relative;
