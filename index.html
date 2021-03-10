@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candy Crush</title>
+  <link rel="stylesheet" href="assets/styles/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/styles/vendor/animate.min.css">
+  <link rel="stylesheet" href="assets/styles/fonts/fonts.css">
+  <link rel="stylesheet" href="assets/styles/style.css">
+
+
+
+  <!-- Load any supplemental Javascript libraries here -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- <script src="assets/scripts/vendor/jquery.min.js"></script> -->
+  <script src="assets/scripts/vendor/popper.min.js"></script>
+  <script src="assets/scripts/vendor/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.2/seedrandom.js">
+  </script>
+  <script src="assets/scripts/candy.js"></script>
+  <script src="assets/scripts/board.js"></script>
+  <script src="assets/scripts/rules.js"></script>
+  <script src="assets/scripts/handle.js"></script>
+
+
+</head>
+
+<body>
+
+  <main>
+    <!-- play page -->
+    <section class="play-page">
+      <img class="img-fluid img-right" src="assets/media/images/login-right2.png" alt="">
+      <div class="content h-100">
+        <div class="row h-100">
+
+          <!-- game board -->
+          <div class="col-12 col-md-7 order-2 order-md-1 d-flex flex-column mx-auto align-self-center game-board" id="mainColumn">
+              <div id="cover"></div>
+              <div id="gameBoard"></div>
+              <canvas id="canvas" width="320" height="320">
+                <p>Canvas not supported on your browser.</p>
+              </canvas>
+          </div>
+
+          <!-- score and time -->
+          <div class="col-12 col-md-5 order-1 order-md-2 right-sec">
+            <div class="header">
+              <div class="score-board board">
+                <img class="img-fluid " src="assets/media/images/score-img.png" alt="">
+                <div class="board-text" id="scoreLabel">00</div>
+              </div>
+              <div class="time-board board">
+                <img class="img-fluid " src="assets/media/images/time-img.png" alt="">
+                <div class="board-text"><span class="minuts">05</span>: <span class="seconds">00</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 d-flex flex-column align-self-center d-none" id="lastColumn">
+            <div class="p-2 text-center">
+              <h2 class="">Move:</h2>
+              <input type="text" id="inputBox">
+            </div>
+            <div class="p-2 text-center modP">
+              <button class="btn btnColor" id="up" disabled>&uarr;</button>
+            </div>
+
+            <div class="p-2 text-center modP">
+              <button class="btn btnColor" id="left" style="margin-right: 20px;" disabled>&larr;</button>
+              <button class="btn btnColor" id="right" style="margin-left: 20px;" disabled>&rarr;</button>
+            </div>
+
+            <div class="p-2 text-center modP">
+              <button class="btn btnColor" id="down" disabled>&darr;</button>
+            </div>
+            <div class="p-2 text-center">
+              <button class="btn btnColor" id="crusher" disabled style='display: none'>Crush Once</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- levels page -->
+    <section class="levels-page">
+      <div class="content h-100">
+        <div class="row h-100">
+          <!-- levels board -->
+          <div class="col-12 levels-board">
+            <!-- level 1 -->
+            <div class="level">
+              <div class="level-content">
+                <h3>1</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 2 -->
+
+            <div class="level">
+              <div class="level-content">
+                <h3>2</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 3 -->
+            <div class="level">
+              <div class="level-content">
+                <h3>3</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 4 -->
+            <div class="level">
+              <div class="level-content">
+                <h3>4</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 5 -->
+            <div class="level">
+              <div class="level-content">
+                <h3>5</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 1 -->
+            <div class="level">
+              <div class="level-content">
+                <h3>1</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 2 -->
+
+            <div class="level">
+              <div class="level-content">
+                <h3>2</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 3 -->
+            <div class="level">
+              <div class="level-content">
+                <h3>3</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 4 -->
+            <div class="level">
+              <div class="level-content">
+                <h3>4</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 5 -->
+            <div class="level">
+              <div class="level-content">
+                <h3>5</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 1 -->
+            <div class="level">
+              <div class="level-content">
+                <h3>1</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 2 -->
+
+            <div class="level">
+              <div class="level-content">
+                <h3>2</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 3 -->
+            <div class="level">
+              <div class="level-content">
+                <h3>3</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 4 -->
+            <div class="level">
+              <div class="level-content">
+                <h3>4</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+            <!-- level 5 -->
+            <div class="level">
+              <div class="level-content">
+                <h3>5</h3>
+                <div class="stars">
+                  <img class="img-fluid" src="assets/media/images/stars2.png" alt="">
+                </div>
+              </div>
+              <div class="locked-level">
+                <img class="img-fluid" src="assets/media/images/locked.png" alt="">
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- question popup -->
+    <section id="question-1" class="question-popup">
+      <div class="content h-100 d-flex flex-column justify-content-center align-items-start">
+        <div class="ques-container">
+          <img class="ques-img img-fluid" src="assets/media/images/ques-popup.png" alt="">
+          <img class="close img-fluid" src="assets/media/images/ques-close.png" alt="">
+          <div class="ques-content">
+            <h4 class="ques-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh?</h4>
+            <div class="answers ">
+              <div class="form-check">
+                <input class="form-check-input true" type="radio" name="flexRadioDefault" id="q1_1">
+                <label class="form-check-label" for="q1_1">
+                  Default checked radio 1
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="q1_2">
+                <label class="form-check-label" for="q1_2">
+                  Default checked radio 2
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="q1_3">
+                <label class="form-check-label" for="q1_3">
+                  Default checked radio 3
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- question popup -->
+    <section id="question-2" class="question-popup">
+      <div class="content h-100 d-flex flex-column justify-content-center align-items-start">
+        <div class="ques-container">
+          <img class="ques-img img-fluid" src="assets/media/images/ques-popup.png" alt="">
+          <img class="close img-fluid" src="assets/media/images/ques-close.png" alt="">
+          <div class="ques-content">
+            <h4 class="ques-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 2?</h4>
+            <div class="answers ">
+              <div class="form-check">
+                <input class="form-check-input true" type="radio" name="flexRadioDefault" id="q1_1">
+                <label class="form-check-label" for="q1_1">
+                  Default checked radio 1
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="q1_2">
+                <label class="form-check-label" for="q1_2">
+                  Default checked radio 2
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="q1_3">
+                <label class="form-check-label" for="q1_3">
+                  Default checked radio 3
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- gameover -->
+    <section class="gameover-popup">
+      <div class="content h-100 d-flex flex-column justify-content-center align-items-start">
+        <div class="gameover-container">
+          <img class="gameover-img img-fluid" src="assets/media/images/gameover-img.png" alt="">
+          <img class="replay-btn img-fluid" src="assets/media/images/replay-btn.png" alt="">
+          <div class="gameover-content">
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+
+    <!-- great -->
+    <section class="great-popup">
+      <div class="content h-100 d-flex flex-column justify-content-center align-items-start">
+        <div class="great-container">
+          <img class="gameover-img img-fluid" src="assets/media/images/great-img.png" alt="">
+          <img class="nextLevel-btn img-fluid" src="assets/media/images/next-level.png" alt="">
+          <div class="gameover-content">
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+
+  </main>
+
+  <script>
+    $(document).on('click', '.question-popup .close',function () {
+      $(this).closest('.question-popup').fadeOut();
+    })
+  </script>
+</body>
+
+</html>
